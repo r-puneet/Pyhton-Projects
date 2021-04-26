@@ -1,9 +1,10 @@
 from tkinter import *
 import mysql.connector
-import tk as tk
+import tkinter as tk
 
 root = Tk()
-root.geometry("500x300")
+root.geometry("800x500")
+root.configure(bg="sky blue")
 
 
 # define function
