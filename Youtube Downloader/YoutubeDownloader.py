@@ -29,11 +29,11 @@ def download_vid():
         yt = YouTube(url)
 
         if choice == choices[0]:
-            select = yt.streams.filter(progressive=True).get_highest_resolution()# fetch the highest resolution of video
-            
+            select = yt.streams.get_highest_resolution()  # fetch the highest resolution of video
+
         elif choice == choices[1]:
-            select = yt.streams.filter(progressive=True, file_extension='mp4').last()
-            
+            select = yt.streams.filter(progressive=True, file_extension='mp4').first()
+
         elif choice == choices[2]:
             select = yt.streams.filter(only_audio=True).first()
         else:
@@ -48,10 +48,12 @@ def download_vid():
 root = Tk()
 root.title("Youtube Video and Audio Downloader")
 root.geometry("400x500")
+root.config(bg="gray3")
+root.resizable(False, False)
 root.columnconfigure(0, weight=1)  # set all content in centre.
 
 # Youtube Link Label
-youtube_link = Label(root, text="Paste the URL of the Video", font=("jost", 15))
+youtube_link = Label(root, text="Paste the URL of the Video", bg="gray3", fg="orange", font=("jost", 15))
 youtube_link.grid()
 
 # Youtube link label entry box
@@ -60,11 +62,11 @@ youtube_entry = Entry(root, width=50, textvariable=youtube_entryvar)
 youtube_entry.grid()
 
 # URL Error Message
-yterror = Label(root, text="Error Message", fg="red", font=("jost", 10))
+yterror = Label(root, text=" To paste URL above use CTRL+V", bg="gray3", fg="red", font=("jost", 10))
 yterror.grid()
 
 # Path Location Label
-pathlabel = Label(root, text="Choose location to save video", font=("jost", 15, "bold"))
+pathlabel = Label(root, text="Choose location to save video", bg="gray3", fg="orange", font=("jost", 15, "bold"))
 pathlabel.grid()
 
 # Path Button 
@@ -72,11 +74,11 @@ pathbtn = Button(root, text="Choose Path", width=10, bg="red", fg="white", comma
 pathbtn.grid()
 
 # Path Error
-patherror = Label(root, text=" Please Choose Correct path", fg="red", font=("jost", 10))
+patherror = Label(root, text=" Please Choose Correct path", bg="gray3", fg="red", font=("jost", 10))
 patherror.grid()
 
 # Download Quality
-ytquality = Label(root, text="Select Quality", font=("jost", 15))
+ytquality = Label(root, text="Select Quality", bg="gray3", fg="orange", font=("jost", 15))
 ytquality.grid()
 
 # combobox for the quality choices
@@ -89,7 +91,7 @@ download_button = Button(root, text="Download", width=10, bg="red", fg="white", 
 download_button.grid()
 
 # Designer Label
-my_name = Label(root, text="Made by Puneet Rajput", font=("jost", 15))
+my_name = Label(root, text="  Made by Puneet Rajput  ", bg="gray3", fg="orange", font=("jost", 15))
 my_name.grid()
 
 root.mainloop()
